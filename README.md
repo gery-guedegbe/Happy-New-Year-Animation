@@ -2,4 +2,4 @@
 
 Carte animée utilisant HTML, CSS et JavaScript.
 
-[Lien Direct](https://https://gery-guedegbe.github.io/Happy-New-Year-Animation/)
+[Lien Direct](https://gery-guedegbe.github.io/Happy-New-Year-Animation/)
