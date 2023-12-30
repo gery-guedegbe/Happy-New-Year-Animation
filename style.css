@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2? family= Dancing+Script:wght@400;600;700 & display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body{  
+    max-width: 1600px;
+    width: 100%;
+    min-height: 100vh;
+    background:  #ffcd78;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    overflow: hidden;
+}
+
+.middle{
+    position: absolute;
+}
+
+.card{
+    cursor: pointer;
+    width: 340px;
+    height: 480px;
+    position: relative;
+    z-index: 2;
+}
+
+.card:hover > .back{
+    transform: perspective(600px) rotateY(0deg);
+}
+
+.card:hover > .front{
+    transform: perspective(600px) rotateY(-180deg);
+}
+
+.front, .back{
+    width:100%;
+    height: 100%;
+    overflow:hidden;
+    position:absolute;
+    backface-visibility: hidden;
+    transition: transform .5s linear;
+    box-shadow: 0 0 32px 16px #1113;
+}
+
+.front{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    padding: 20px;
+    display: grid;
+    place-content: center;
+    background-color: #ffcd78;
+}
+
+.front .text{
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 3px dashed #242424;
+    padding: 80px 20px;
+}
+
+.front .text h4{
+    font-size: 35px;
+}
+
+.back {
+    background: white;
+    transform: rotateY(180deg);
+}
+
+.back .back-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+    padding: 20px;
+    margin: 40px auto;
+}
+
+.back-content h2{
+    font-size: 22px;
+    font-weight: 500;
+    font-family: 'Dancing Script', cursive;
+}
+
+.back-content p{
+    font-weight: 700;
+    font-family: 'Dancing Script', cursive;
+}
+
+.social-media a{
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    color: #2c3e50;
+    font-size: 24px;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.social-media a:hover{
+    background: #2c3e50;
+    color:white;
+}
+
+body span{
+    background-color: black;
+    position: absolute;
+    z-index: 1;
+    animation: drop 5s linear infinite;
+    opacity: 0;
+    width: 100%;
+}
+
+@keyframes drop{
+    0%{
+        transform: translateY(-120px) rotateZ(0deg);
+        opacity: 0;
+    }
+
+    20%{
+        opacity: 1;
+    }
+
+    100%{
+        transform: translateY(0px) rotateZ(360deg);
+        opacity: 0;
+    }
+}
+
+body span:nth-child(4n+1){
+    background-color: white;
+}
+
+body span:nth-child(4n+2){
+    background-color: #00ff00;
+}
+
+body span:nth-child(4n+3){
+    background-color: #ff4356;
+}
+
+body span:nth-child(4n+4){
+    background-color: #ad48ff;
+}
+
+
+@media only screen and (max-width: 768px) {
+    body{
+        box-sizing: border-box;
+        max-width: 375px;
+        width: 90%;
+        margin: 40px 50px;
+        display: grid;
+        place-content: center;
+    }
+}
