@@ -1,25 +1,33 @@
-let max = 400;
-let body = document.querySelector("body");
+// https://confetti.js.org/more.html
 
-function move() {
-  for (i = 0; i < max; i++) {
-    span = document.createElement("span");
+const duration = 2000 * 1000,
+  animationEnd = Date.now() + duration,
+  defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-    let posX = Math.random() * window.innerWidth;
-    let posY = Math.random() * window.innerHeight;
-    let width = Math.random() * 30;
-    let height = Math.random() * 10;
-    let delay = Math.random() * 5;
-
-    span.style.left = posX + "px";
-    span.style.top = posY + "px";
-    span.style.width = width + "px";
-    span.style.height = height + "px";
-    span.style.animationDelay = delay + "s";
-
-    console.log(span);
-    body.append(span);
-  }
+function randomInRange(min, max) {
+  return Math.random() * (max - min) + min;
 }
 
-move();
+const interval = setInterval(function () {
+  const timeLeft = animationEnd - Date.now();
+
+  if (timeLeft <= 0) {
+    return clearInterval(interval);
+  }
+
+  const particleCount = 50 * (timeLeft / duration);
+
+  // since particles fall down, start a bit higher than random
+  confetti(
+    Object.assign({}, defaults, {
+      particleCount,
+      origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+    })
+  );
+  confetti(
+    Object.assign({}, defaults, {
+      particleCount,
+      origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+    })
+  );
+}, 250);
